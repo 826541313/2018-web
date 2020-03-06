@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>homework</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<h1>学生信息</h1>
+<fieldset>
+	<legend id="legend">学生档案</legend>
+	<form id="homework">
+		姓名：
+		<input type="text" name="name" placeholder="请输入姓名" required="required" autofocus="" autocomplete="off"/> <span>*</span>
+		<br></br>
+		学号：
+		<input type="text" name="classnumber" placeholder="请输入学号" required=""/> <span>*</span>
+		<br></br>
+		手机号码：
+		<input type="tel" name="telephone" placeholder="请输入手机号码" required=""/> <span>*</span>
+		<br></br>
+		<label for="email">邮箱地址：</label>
+		<input type="email" name="email" id="email" placeholder="请输入邮箱地址" required="" list="emailList"/> <span>*</span>
+		<datalist id="emailList">
+			<option value="*@qq.com"/>
+			<option value="*@163.com"/>
+			<option value="*@123.com"/>
+			<option value="*@wangyi.com"/>
+			<option value="*@qita.com"/>
+		</datalist>
+		<br></br>
+		录取学校：
+		<input type="search" name="search" list="schools" />
+		<datalist id="schools">
+			<option>河北师范大学</option>
+			<option>东华大学</option>
+			<option>河南理工大学</option>
+			<option>廊坊师范学院</option>
+		</datalist>
+		<br></br>
+		入学成绩：
+		<input type="text" name="chengji"/>
+		<br></br>
+		入学时间：
+		<input type="Date" name="data"/>
+		<br></br>
+		<input type="submit" value="提交">
+	</form>
+</fieldset>
+<script type="text/javascript">
+	var legend = document.getElementById('legend');
+	legend.style.color = 'red'
+	var span = document.getElementsByTagName('span');
+	var email = document.getElementById('email');
+	var emailList = document.getElementById('emailList');
+	var option = document.getElementsByTagName('option');
+
+	email.oninput = function(){
+		var value = email.value;
+		var pattern = /(.*)(?=@)/;
+		for(var i=0;i<option.length;i++){
+			option[i].value = option[i].value.replace(pattern,value);
+		}
+		emailList.style.display = 'block';
+	}
+	email.onblur = function (){
+		emailList.style.display = 'none';
+	}
+
+	for(var i = 0 ; i<span.length;i++){
+		span[i].style.color = 'red';
+	}
+</script>
+</body>
+</html>.
