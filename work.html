@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>webwork</title>
+	<title>2</title>
 	<meta charset="utf-8">
+	<style type="text/css">
+		fieldset{
+			width: 610px;
+			height: 220px;
+			margin: auto;
+		}
+		#top{
+			width: 580px;
+			height: 42px;
+			border: 1px solid grey;
+			margin-left: 5px;
+		}
+		#text{
+			height: 55px;
+			width: 550px;
+			margin-left: 25px;
+			background-color: grey;
+		}
+		.lit{
+			width: 20px;
+			height: 20px;
+			margin-left: 5px;
+			margin-right: 5px;
+			display:block;
+			float: left;
+			margin-top: 11px;
+		}
+	</style>
 </head>
 <body>
-<!-- 	<fieldset>
-		<legend id="legend"><strong style="color: red;font-size: 30px">网页换肤</strong></legend>
-		<fieldset>
-			<ul><
-			</ul>
-		</fieldset>
-	</fieldset> -->
-	<img src="2.png" style="width: 56%;height: 56%">
+	<fieldset>
+		<legend>
+			<h1 style="color: red">网页换肤</h1>
+		</legend>
+		<div id="top">
+			<div class="lit" id="top1"></div>
+			<div class="lit" id="top2"></div>
+			<div class="lit" id="top3"></div>
+			<div class="lit" id="top4"></div>
+			<div class="lit" id="top5"></div>
+			<div class="lit" id="top6"></div>
+		</div>
+		<div id="text">
+			<p>
+				LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。
+			</p>
+		</div>
+	</fieldset>
+	<script type="text/javascript">
+		var txtbgc = document.getElementById('text');
+		var allcolor = ["grey", "purple", "red", "yellow", "powderblue", "orchid"]; 
+		for(var i = 0;i < allcolor.length;i++){
+			var changecol = document.getElementById('top' + (i + 1));
+			changecol.style.backgroundColor = allcolor[i];
+		}
+		for (var i = 0; i < allcolor.length; i++) {
+			var changecol = document.getElementById('top' + (i + 1));
+			changecol.onclick = function(){
+				txtbgc.style.backgroundColor = this.style.backgroundColor;
+				localStorage.color = this.style.backgroundColor;
+				for (var i = 0; i < allcolor.length; i++) {
+					var changecolo = document.getElementById('top' + (i + 1));
+					changecolo.style.marginTop = '11px';
+				}
+				this.style.marginTop = '5px';
+				localStorage.name = this.id;
+			}
+		}
+		if (localStorage.color && localStorage.name) {
+			txtbgc.style.backgroundColor = localStorage.color;
+			var up = document.getElementById(localStorage.name);
+			up.style.marginTop = '5px';
+		}
+		else{
+			var top1 = document.getElementById('top1');
+			top1.style.marginTop = '5px';
+			txtbgc.style.backgroundColor = allcolor[0];
+		}
+	</script>
 </body>
 </html>
